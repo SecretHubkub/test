@@ -1,1 +1,39 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Secret hub", "DarkTheme")
+local Tab = Window:NewTab("Auto farm")
+local Section = Tab:NewSection("Auto farm")
 
+Section:NewToggle("Auto farm WaterMelon", "equip basket first", function(a)
+    _G. Automelon = a --autofarm watermelon (working)
+    while _G. Automelon do wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1813.29651, 19.4999981, 715.055359, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon9
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1867.67297, 19.4999981, 729.625488, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon3
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1839.85583, 19.4999981, 722.171936, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon13
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1854.70093, 19.4999981, 778.037598, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon5
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1800.32446, 19.4999981, 763.467468, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon6
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1826.88379, 19.4999981, 770.584045, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon10
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1845.3916, 19.4999981, 701.512024, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon11
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1806.71277, 19.4999981, 739.626099, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon8
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1818.83228, 19.4999981, 694.395447, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon7
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1833.27209, 19.4999981, 746.742676, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon12
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1861.08923, 19.4999981, 754.196228, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon4
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1873.20874, 19.4999981, 708.965576, 0.258864343, -0, -0.965913713, 0, 1, -0, 0.965913713, 0, 0.258864343) wait(4) --melon2
+    end
+end)
+
+Section:NewToggle("Auto Cactus", "equip basket first", function(b)
+    _G. Autocactus = b --autofarm cactus (working)
+    while _G. Autocactus do wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-466.5, 22.5, -328.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac1
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-465.5, 22.5, -304.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac10
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501.5, 22.5, -312.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac9
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-435.5, 22.5, -361.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac3
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-443.5, 22.5, -348.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac11
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-435.5, 22.5, -399.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac4
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-473.5, 22.5, -399.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac5
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-466.5, 22.5, -361.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac2
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501.5, 22.5, -340.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac8
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501.5, 22.5, -373.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac7
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-501.5, 22.5, -399.5, 0, 0, -1, 0, 1, 0, 1, 0, 0) wait(4) --cac6
+    end
+end)
