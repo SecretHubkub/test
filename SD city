@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Secret hub", "DarkTheme")
 local Tab = Window:NewTab("Auto farm")
-Section:UpdateSection("Autofarm")
+Section:UpdateSection("Section New Title")
 Section:NewToggle("Auto farm WaterMelon", "equip basket first", function(a)
     _G. Automelon = a --autofarm watermelon (working)
     while _G. Automelon do wait()
