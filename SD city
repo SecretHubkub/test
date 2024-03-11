@@ -1,1 +1,9 @@
-
+_G.Automelon = true
+while _G.Automelon do wait()
+    for i,v in pairs(game:GetService("Workspace").Farm.Watermelon:GetDescendants()) do
+        if v.Name == "TouchInterest" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+            wait(4)
+        end
+    end
+end
