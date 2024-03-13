@@ -60,7 +60,7 @@ Tab:AddToggle({
 	Name = "Auto Rocky Egg",
 	Default = false,
 	Callback = function(Value)
-        _G.Rocky_egg = false --auto egg2 zone1
+        _G.Rocky_egg = Value --auto egg2 zone1
         while _G.Rocky_egg do wait()
             local args = {
                 [1] = "Rocky Egg",
