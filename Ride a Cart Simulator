@@ -1,5 +1,8 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Ride a Cart Simulator"})
+-- zone1
+
+
 local Tab = Window:MakeTab({
 	Name = "zone1",
 	Icon = "rbxassetid://4483345998",
@@ -13,7 +16,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 	_G.Autocolect = Value -- auto เก็บลูกเพิ่มพลัง
-while _G.Autocolect do wait()
+while _G.Autocolect do wait(.2)
     for i,v in pairs(game:GetService("Workspace").Effects:GetDescendants()) do
         if v.Name == "Template" then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
@@ -71,4 +74,33 @@ Tab:AddToggle({
         end    
 	end    
 })
+
+-- zone2
+
+local Tab = Window:MakeTab({
+	Name = "Zone2",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Collect!",
+	Default = false,
+	Callback = function(Value)
+    _G.AutoCollect = Value
+        while _G.AutoCollect do wait(.4)
+            for i,v in pairs(game:GetService("Workspace").Effects:GetDescendants()) do
+                if v.Name == "Template" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                    wait(.4)
+                end
+            end
+        end
+	end    
+})
+
 OrionLib:Init()
