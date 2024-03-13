@@ -1,0 +1,74 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Ride a Cart Simulator"})
+local Tab = Window:MakeTab({
+	Name = "zone1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+Tab:AddToggle({
+	Name = "Auto collect!",
+	Default = false,
+	Callback = function(Value)
+	_G.Autocolect = Value -- auto เก็บลูกเพิ่มพลัง
+while _G.Autocolect do wait()
+    for i,v in pairs(game:GetService("Workspace").Effects:GetDescendants()) do
+        if v.Name == "Template" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            wait(.2)
+        end
+    end
+end
+	end    
+})
+Tab:AddToggle({
+	Name = "Auto Farm!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm = Value --ออโต้ฟาม
+        while _G.Autofarm do wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16000, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait(.5)
+        end    
+    end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Egg!",
+	Default = false,
+	Callback = function(Value)
+	    _G.Autoegg1 = Value --auto egg1 zone1
+        while _G.Autoegg1 do wait(4)
+            local args = {
+                [1] = "Egg",
+                [2] = 1
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Rocky Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Rocky_egg = false --auto egg2 zone1
+        while _G.Rocky_egg do wait()
+            local args = {
+                [1] = "Rocky Egg",
+                [2] = 1
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end    
+	end    
+})
+OrionLib:Init()
