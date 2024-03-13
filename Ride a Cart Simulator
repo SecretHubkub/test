@@ -45,15 +45,13 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 	    _G.Autoegg1 = Value --auto egg1 zone1
-        while _G.Autoegg1 do wait(4)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16010.1895, 393.172546, -164.996826, 0.995117486, 1.24040822e-08, -0.0986974612, -9.67021041e-09, 1, 2.8177892e-08, 0.0986974612, -2.70858891e-08, 0.995117486)
+        while _G.Autoegg1 do wait(5)
             local args = {
                 [1] = "Egg",
                 [2] = 1
             }
 
             game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16099.2041, 393.127258, -113.225128, 0.877062201, 4.58509106e-08, -0.480376869, -4.34120384e-09, 1, 8.75217125e-08, 0.480376869, -7.46765707e-08, 0.877062201)
         end
 	end    
 })
@@ -63,7 +61,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Rocky_egg = Value --auto egg2 zone1
-        while _G.Rocky_egg do wait(4)
+        while _G.Rocky_egg do wait(5)
             local args = {
                 [1] = "Rocky Egg",
                 [2] = 1
