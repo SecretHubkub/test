@@ -46,6 +46,7 @@ Tab:AddToggle({
 	Callback = function(Value)
 	    _G.Autoegg1 = Value --auto egg1 zone1
         while _G.Autoegg1 do wait(4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16010.1895, 393.172546, -164.996826, 0.995117486, 1.24040822e-08, -0.0986974612, -9.67021041e-09, 1, 2.8177892e-08, 0.0986974612, -2.70858891e-08, 0.995117486)
             local args = {
                 [1] = "Egg",
                 [2] = 1
