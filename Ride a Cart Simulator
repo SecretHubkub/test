@@ -52,6 +52,7 @@ Tab:AddToggle({
             }
 
             game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16099.2041, 393.127258, -113.225128, 0.877062201, 4.58509106e-08, -0.480376869, -4.34120384e-09, 1, 8.75217125e-08, 0.480376869, -7.46765707e-08, 0.877062201)
         end
 	end    
 })
