@@ -61,13 +61,13 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Rocky_egg = Value --auto egg2 zone1
-        while _G.Rocky_egg do wait()
+        while _G.Rocky_egg do wait(4)
             local args = {
                 [1] = "Rocky Egg",
                 [2] = 1
             }
             
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))            
         end    
 	end    
 })
