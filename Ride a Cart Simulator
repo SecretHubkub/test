@@ -107,12 +107,10 @@ Tab:AddToggle({
     Default = false,
     Callback = function(Value)
         _G.Autofarm_zone2 = Value
-        while _G.Autofarm_zone2 do
-            wait(0.1)
+        while _G.Autofarm_zone2 do wait(1)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait(5)
         end
-        -- เพิ่มบรรทัดนี้เพื่อให้วงลูปหยุดทำงานเมื่อ _G.Autofarm_zone2 เป็นเท็จ
-        print("Autofarm stopped") -- คุณสามารถแทนที่ print("Autofarm stopped") ด้วยการกระทำที่คุณต้องการให้โปรแกรมทำเมื่อหยุดทำงาน
     end    
 })
 local Section = Tab:AddSection({
