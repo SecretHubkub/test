@@ -119,10 +119,71 @@ local Section = Tab:AddSection({
 })
 
 Tab:AddToggle({
-	Name = "This is a toggle!",
+	Name = "AutoSnowy_Egg!",
 	Default = false,
 	Callback = function(Value)
-
+        _G.AutoSnowy_Egg = Value
+        while _G.AutoSnowy_Egg do wait(5)
+            local args = {
+                [1] = "Snowy Egg",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end
 	end    
 })
+
+Tab:AddToggle({
+	Name = "AutoVolcanic_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoVolcanic_Egg = Value
+        while _G.AutoVolcanic_Egg do wait(5)
+            local args = {
+                [1] = "Volcanic Egg",
+                [2] = 1
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoRobotic_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoRobotic_Egg = Value
+        while _G.AutoRobotic_Egg do wait(5)
+            local args = {
+                [1] = "Robotic Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoSpace_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoSpace_Egg = Value
+        while _G.AutoSpace_Egg do wait(5)
+            local args = {
+                [1] = "Space Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+        end
+	end    
+})
+
+--zone3
+
+
+
+
 OrionLib:Init()
