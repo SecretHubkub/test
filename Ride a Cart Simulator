@@ -187,7 +187,7 @@ Tab:AddToggle({
 	Name = "Auto Farm!",
 	Default = false,
 	Callback = function(Value)
-        _G.Autofarm_zone3 = true
+        _G.Autofarm_zone3 = Value
         while _G.Autofarm_zone3 do wait()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15999.9844, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
             wait(.2)
