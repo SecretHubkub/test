@@ -123,7 +123,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoSnowy_Egg = Value
-        while _G.AutoSnowy_Egg do wait(1)
+        while _G.AutoSnowy_Egg do wait(3)
             local args = {
                 [1] = "Snowy Egg",
                 [2] = 1
@@ -138,7 +138,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoVolcanic_Egg = Value
-        while _G.AutoVolcanic_Egg do wait(1)
+        while _G.AutoVolcanic_Egg do wait(3)
             local args = {
                 [1] = "Volcanic Egg",
                 [2] = 1
@@ -154,7 +154,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoRobotic_Egg = Value
-        while _G.AutoRobotic_Egg do wait(1)
+        while _G.AutoRobotic_Egg do wait(3)
             local args = {
                 [1] = "Robotic Egg",
                 [2] = 1
@@ -170,7 +170,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoSpace_Egg = Value
-        while _G.AutoSpace_Egg do wait(1)
+        while _G.AutoSpace_Egg do wait(3)
             local args = {
                 [1] = "Space Egg",
                 [2] = 1
@@ -183,7 +183,17 @@ Tab:AddToggle({
 
 --zone3
 
-
+Tab:AddToggle({
+	Name = "Auto Farm!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm_zone3 = true
+        while _G.Autofarm_zone3 do wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15999.9844, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait(.2)
+        end
+	end    
+})
 
 
 OrionLib:Init()
