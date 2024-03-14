@@ -107,9 +107,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Autofarm_zone2 = Value
-        while _G.Autofarm_zone2 do wait() 
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        while _G.Autofarm_zone2 do wait(.1) 
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
         end
 	end    
