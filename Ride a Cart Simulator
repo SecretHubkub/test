@@ -33,7 +33,7 @@ Tab:AddToggle({
         _G.Autofarm = Value --ออโต้ฟาม
         while _G.Autofarm do wait()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16000, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            wait(.1)
+            wait(6)
         end    
     end    
 })
@@ -197,6 +197,7 @@ Tab:AddToggle({
         _G.Autofarm_zone3 = Value
         while _G.Autofarm_zone3 do wait()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15999.9844, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait(6)
         end
 	end    
 })
