@@ -106,14 +106,10 @@ Tab:AddToggle({
 	Name = "Auto Farm",
 	Default = false,
 	Callback = function(Value)
-        _G.AutoCollect_zone2 = Value
-        while _G.AutoCollect_zone2 do wait()
-            for i,v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
-                if v.Name == "Template" then
-                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                    wait(.1)
-                end
-            end
+        _G.Autofarm_zone2 = Value
+        while _G.Autofarm_zone2 do wait() 
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            wait(.2)
         end
 	end    
 })
