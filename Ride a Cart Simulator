@@ -15,15 +15,16 @@ Tab:AddToggle({
 	Name = "Auto collect!",
 	Default = false,
 	Callback = function(Value)
-	_G.Autocolect = Value -- auto เก็บลูกเพิ่มพลัง
-while _G.Autocolect do wait(.2)
-    for i,v in pairs(game:GetService("Workspace").Effects:GetDescendants()) do
-        if v.Name == "Template" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-            wait(.2)
+        _G.Autocollect_zone1 = Value
+        while _G.Autocollect_zone1 do wait()
+            for i,v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                if v.Name == "Template" then
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                    wait(.1)
+                end
+            end
         end
-    end
-end
+
 	end    
 })
 Tab:AddToggle({
@@ -91,16 +92,15 @@ Tab:AddToggle({
 	Name = "Auto Collect!",
 	Default = false,
 	Callback = function(Value)
-    _G.AutoCollect = Value
-        while _G.AutoCollect do wait(.4)
-            for i,v in pairs(game:GetService("Workspace").Effects:GetDescendants()) do
+        _G.Autocollect_zone2 = Value
+        while _G.Autocollect_zone2 do wait()
+            for i,v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
                 if v.Name == "Template" then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                    wait(.4)
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                    wait(.1)
                 end
             end
         end
 	end    
 })
-
 OrionLib:Init()
