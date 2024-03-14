@@ -182,7 +182,15 @@ Tab:AddToggle({
 })
 
 --zone3
+local Tab = Window:MakeTab({
+	Name = "Zone3",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
 Tab:AddToggle({
 	Name = "Auto Farm!",
 	Default = false,
