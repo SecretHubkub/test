@@ -123,7 +123,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoSnowy_Egg = Value
-        while _G.AutoSnowy_Egg do wait(5)
+        while _G.AutoSnowy_Egg do wait(1)
             local args = {
                 [1] = "Snowy Egg",
                 [2] = 1
@@ -138,7 +138,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoVolcanic_Egg = Value
-        while _G.AutoVolcanic_Egg do wait(5)
+        while _G.AutoVolcanic_Egg do wait(1)
             local args = {
                 [1] = "Volcanic Egg",
                 [2] = 1
@@ -154,7 +154,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoRobotic_Egg = Value
-        while _G.AutoRobotic_Egg do wait(5)
+        while _G.AutoRobotic_Egg do wait(1)
             local args = {
                 [1] = "Robotic Egg",
                 [2] = 1
@@ -170,7 +170,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.AutoSpace_Egg = Value
-        while _G.AutoSpace_Egg do wait(5)
+        while _G.AutoSpace_Egg do wait(1)
             local args = {
                 [1] = "Space Egg",
                 [2] = 1
