@@ -107,15 +107,15 @@ Tab:AddToggle({
     Default = false,
     Callback = function(Value)
         _G.Autofarm_zone2 = Value
-        if _G.Autofarm_zone2 then
-            repeat
-                wait(0.1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-            until not _G.Autofarm_zone2
+        while _G.Autofarm_zone2 do
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+            if not _G.Autofarm_zone2 then
+                break
+            end
         end
     end    
 })
-
 local Section = Tab:AddSection({
 	Name = "Auto Egg"
 })
