@@ -1,11 +1,12 @@
 _G.Autocollect_zone3 = true
-while _G.Autocollect_zone3 do wait(.1)
-    pcall(funtion()
-        for i,v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+while _G.Autocollect_zone3 do
+    wait(0.1)
+    pcall(function()
+        for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
             if v.Name == "Template" then
                 v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                wait(.2)
             end
         end
+        wait(0.2)  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
     end)
 end
