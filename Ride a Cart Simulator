@@ -5,8 +5,8 @@ while _G.Autocollect_zone3 do
         for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
             if v.Name == "Template" then
                 v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                wait(.2)
             end
-        end
-        wait(0.2)  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+        end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
     end)
 end
