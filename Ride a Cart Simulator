@@ -1,5 +1,5 @@
-_G.Autoskill = true
-while _G.Autoskill do wait()
+_G.Autoskill1 = true
+while _G.Autoskill1 do wait()
     local args = {
         [1] = {
             ["Goal"] = "Console Move",
@@ -7,8 +7,11 @@ while _G.Autoskill do wait()
         }
     }
     
-    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-    wait(.5)
+    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))   
+end    
+
+_G.Autoskill2 = true
+while _G.Autoskill2 do wait()
     local args = {
         [1] = {
             ["Goal"] = "Console Move",
@@ -17,7 +20,10 @@ while _G.Autoskill do wait()
     }
     
     game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-    wait(.5)
+end
+
+_G.Autoskill3 = true
+while _G.Autoskill3 do wait()
     local args = {
         [1] = {
             ["Goal"] = "Console Move",
@@ -26,7 +32,10 @@ while _G.Autoskill do wait()
     }
     
     game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-    wait(.5)
+end
+
+_G.Autoskill4 = true
+while _G.Autoskill4 do wait()
     local args = {
         [1] = {
             ["Goal"] = "Console Move",
@@ -35,5 +44,4 @@ while _G.Autoskill do wait()
     }
     
     game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-    wait(.5)     
-end    
+end
