@@ -1,12 +1,39 @@
-_G.Autocollect_zone3 = true
-while _G.Autocollect_zone3 do
-    wait(0.1)
-    pcall(function()
-        for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
-            if v.Name == "Template" then
-                v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                wait(.2)
-            end
-        end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
-    end)
-end
+_G.Autoskill = true
+while _G.Autoskill do wait()
+    local args = {
+        [1] = {
+            ["Goal"] = "Console Move",
+            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Normal Punch")
+        }
+    }
+    
+    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
+    wait(.5)
+    local args = {
+        [1] = {
+            ["Goal"] = "Console Move",
+            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Consecutive Punches")
+        }
+    }
+    
+    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
+    wait(.5)
+    local args = {
+        [1] = {
+            ["Goal"] = "Console Move",
+            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Shove")
+        }
+    }
+    
+    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
+    wait(.5)
+    local args = {
+        [1] = {
+            ["Goal"] = "Console Move",
+            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Uppercut")
+        }
+    }
+    
+    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
+    wait(.5)     
+end    
