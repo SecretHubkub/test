@@ -50,8 +50,8 @@ Tab:AddToggle({
 	Name = "Auto Egg!",
 	Default = false,
 	Callback = function(Value)
-	    _G.Autoegg1 = Value --auto egg1 zone1
-        while _G.Autoegg1 do wait(5)
+	    _G.Autoegg = Value --auto egg1 zone1
+        while _G.Autoegg do wait(5)
             local args = {
                 [1] = "Egg",
                 [2] = 1
