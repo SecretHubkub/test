@@ -19,11 +19,10 @@ Tab:AddToggle({
             local args = {
                 [1] = {
                     ["Goal"] = "Console Move",
-                    ["Tool"] = game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Normal Punch")
+                    ["Tool"] = game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Homerun")
                 }
             }
-            
-            game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))   
+            game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
         end    
 	end    
 })
