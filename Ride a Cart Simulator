@@ -15,7 +15,7 @@ Tab:AddToggle({
 	Name = "Auto collect!",
 	Default = false,
 	Callback = function(Value)
-        _G.Autocollect_zone1 = true
+        _G.Autocollect_zone1 = Value
         while _G.Autocollect_zone1 do
             wait()
             pcall(function()
@@ -94,7 +94,7 @@ Tab:AddToggle({
 	Name = "Auto Collect!",
 	Default = false,
 	Callback = function(Value)
-        _G.Autocollect_zone2 = true
+        _G.Autocollect_zone2 = Value
         while _G.Autocollect_zone2 do
             wait(0.1)
             pcall(function()
