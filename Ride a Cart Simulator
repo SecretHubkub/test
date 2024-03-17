@@ -16,8 +16,7 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Autocollect_zone1 = Value
-        while _G.Autocollect_zone1 do
-            wait()
+        while _G.Autocollect_zone1 do wait()
             pcall(function()
                 for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
                     if v.Name == "Template" then
@@ -95,13 +94,12 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Autocollect_zone2 = Value
-        while _G.Autocollect_zone2 do
-            wait(0.1)
+        while _G.Autocollect_zone2 do wait()
             pcall(function()
                 for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
                     if v.Name == "Template" then
                         v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                        wait(.2)
+                        wait(.1)
                     end
                 end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
             end)
@@ -202,12 +200,12 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
         _G.Autocollect_zone3 = Value
-        while _G.Autocollect_zone3 do wait(0.1)
+        while _G.Autocollect_zone3 do wait()
             pcall(function()
                 for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
                     if v.Name == "Template" then
                         v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                        wait(.2)
+                        wait(.1)
                     end
                 end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
             end)
