@@ -190,6 +190,23 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Auto Farm"
 })
+
+Tab:AddToggle({
+	Name = "Auto Collect!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone3 = Value
+        while _G.Autocollect_zone3 do wait(.1)
+            for i,v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                if v.Name == "Template" then
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                    wait(.1)
+                end
+            end
+        end
+	end    
+})
+
 Tab:AddToggle({
 	Name = "Auto Farm!",
 	Default = false,
