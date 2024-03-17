@@ -1,47 +1,29 @@
-_G.Autoskill1 = true
-while _G.Autoskill1 do wait()
-    local args = {
-        [1] = {
-            ["Goal"] = "Console Move",
-            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Normal Punch")
-        }
-    }
-    
-    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))   
-end    
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "test", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Auto skill",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Skill"
+})
 
-_G.Autoskill2 = true
-while _G.Autoskill2 do wait()
-    local args = {
-        [1] = {
-            ["Goal"] = "Console Move",
-            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Consecutive Punches")
-        }
-    }
-    
-    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-end
 
-_G.Autoskill3 = true
-while _G.Autoskill3 do wait()
-    local args = {
-        [1] = {
-            ["Goal"] = "Console Move",
-            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Shove")
-        }
-    }
-    
-    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-end
-
-_G.Autoskill4 = true
-while _G.Autoskill4 do wait()
-    local args = {
-        [1] = {
-            ["Goal"] = "Console Move",
-            ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Uppercut")
-        }
-    }
-    
-    game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))
-end
+Tab:AddToggle({
+	Name = "Auto Skill1",
+	Default = false,
+	Callback = function(Value)
+        _G.Autoskill1 = Value
+        while _G.Autoskill1 do wait()
+            local args = {
+                [1] = {
+                    ["Goal"] = "Console Move",
+                    ["Tool"] = game:GetService("Players").LocalPlayer:WaitForChild("Normal Punch")
+                }
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args))   
+        end    
+	end    
+})
