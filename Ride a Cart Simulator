@@ -226,4 +226,27 @@ Tab:AddToggle({
         end
 	end    
 })
+
+--Zone4
+local Tab = Window:MakeTab({
+	Name = "Zone4",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm_zone4 = Value
+        while _G.Autofarm_zone4 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(32000, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end
+	end    
+})
+
+
 OrionLib:Init()
