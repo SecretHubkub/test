@@ -1,1 +1,25 @@
+_G.Key = "1234"
+_G.Key2 = "2304u7"
+local Keychecked = false
+local Hwid = nil
+local Hwidplr = game:GetService("RbxAnalyticsService"):GetClientId()
 
+if _G.Key == "1234" then
+    Hwid = "c72c3794-3a10-4b72-b03f-e79809148bee"
+    Keychecked = true
+end
+
+if _G.Key2 == "2304u7" then
+    Hwid = "c72c3794-3a10-4b72-b03f-e79809148beed"
+    Keychecked = true
+end
+
+if Keychecked == true then
+    if Hwidplr == Hwid then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/SecretHubkub/test/main/Ride%20a%20Cart%20Simulator'))()
+    else
+        print("no key")
+    end
+else
+    print("no hwid")
+end
