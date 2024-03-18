@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Ride a Cart Simulator"})
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KazeOnTop/Rice-Anti-Afk/main/Wind", true))() --anti afk
-setfpscap(25)
+setfpscap(15)
 -- zone1
 
 
