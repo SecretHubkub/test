@@ -16,7 +16,7 @@ end
 
 if Keychecked == true then
     if Hwidplr == Hwid then
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/SecretHubkub/test/main/Ride%20a%20Cart%20Simulator'))()
+        print ("script")
     else
         print("no key")
     end
