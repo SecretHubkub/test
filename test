@@ -5,15 +5,21 @@ if _G.Key == "1234" then
     if Hwidplr == Hwid then
         print("script")
     else
-        print("no key")
+        game.Players.LocalPlayer:Kick("No key or Hwid")
     end
-elseif _G.Key2 == "2304u7" then
-    local Hwid = "c72c3794-3a10-4b72-b03f-e79809148beed"
+elseif _G.Key2 == "" then
+    local Hwid = ""
     if Hwidplr == Hwid then
         print("script")
     else
-        print("no key")
+        game.Players.LocalPlayer:Kick("No key or Hwid")
     end
+elseif _G.Key3 == "" then
+    local Hwid = ""
+    if Hwidplr == Hwid then
+        print("script")
+    else
+        game.Players.LocalPlayer:Kick("No key or Hwid")
 else
-    print("no hwid")
+    game.Players.LocalPlayer:Kick("No key or Hwid")
 end
