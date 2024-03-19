@@ -1,7 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Ride a Cart Simulator"})
-loadstring(game:HttpGet("https://raw.githubusercontent.com/evxncodes/mainroblox/main/anti-afk", true))() --anti afk
-setfpscap(10)
 -- zone1
 
 
@@ -320,6 +318,37 @@ Tab:AddToggle({
             end)
         end
 	end    
+})
+
+--เพ่ิมเติม
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Anti Afk"
+})
+
+Tab:AddButton({
+	Name = "Button!",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/evxncodes/mainroblox/main/anti-afk", true))() --anti afk
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Set fps cap"
+})
+
+Tab:AddTextbox({
+	Name = "Set fpscap",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+        setfpscap(Value)
+	end	  
 })
 
 OrionLib:Init()
