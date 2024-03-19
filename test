@@ -20,6 +20,7 @@ elseif _G.Key3 == "" then
         print("script")
     else
         game.Players.LocalPlayer:Kick("No key or Hwid")
+    end
 else
     game.Players.LocalPlayer:Kick("No key or Hwid")
 end
