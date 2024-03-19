@@ -1,4 +1,4 @@
-_G.script_key = "" -- script: print("Hello World").lua
+script_key = "" -- script: print("Hello World").lua
 --[[
 
     This script is protected with
