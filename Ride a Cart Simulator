@@ -344,7 +344,7 @@ local Section = Tab:AddSection({
 
 Tab:AddTextbox({
 	Name = "Set fpscap",
-	Default = "default box input",
+	Default = "fps",
 	TextDisappear = true,
 	Callback = function(Value)
         setfpscap(Value)
