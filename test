@@ -1,5 +1,4 @@
 _G.Key = "1234"
-_G.Key2 = "2304u7"
 local Keychecked = false
 local Hwid = nil
 local Hwidplr = game:GetService("RbxAnalyticsService"):GetClientId()
@@ -18,6 +17,8 @@ else
     print("no hwid")
 end
 
+_G.Key2 = "2304u7"
+
 if _G.Key2 == "2304u7" then
     Hwid = "c72c3794-3a10-4b72-b03f-e79809148beed"
     Keychecked = true
@@ -32,3 +33,6 @@ if Keychecked == true then
 else
     print("no hwid")
 end
+
+setclipboard(game:GetService("RbxAnalyticsService"):GetClientId())
+--c72c3794-3a10-4b72-b03f-e79809148bee
