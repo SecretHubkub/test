@@ -8,6 +8,15 @@ if _G.Key == "1234" then
     Hwid = "c72c3794-3a10-4b72-b03f-e79809148bee"
     Keychecked = true
 end
+if Keychecked == true then
+    if Hwidplr == Hwid then
+        print ("script")
+    else
+        print("no key")
+    end
+else
+    print("no hwid")
+end
 
 if _G.Key2 == "2304u7" then
     Hwid = "c72c3794-3a10-4b72-b03f-e79809148beed"
