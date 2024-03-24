@@ -1,4 +1,4 @@
-script_key = "KEY_HERE" -- script: teso.lua
+script_key = "" -- script: teso.lua
 --[[
 
     This script is protected with
