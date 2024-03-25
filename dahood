@@ -1,0 +1,4 @@
+_G.cash = true
+while _G.cash do wait()
+    fireclickdetector(game:GetService("Workspace").Ignored.Drop.MoneyDrop)
+end
