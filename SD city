@@ -1,15 +1,25 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Secret Hub", "DarkTheme")
-local Tab = Window:NewTab("zone 1")
-local Section = Tab:NewSection("auto farm")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Secrethub"})
+local Tab = Window:MakeTab({
+	Name = "Zone1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
 
-Section:NewToggle("auto training", "", function(state)
-    _G.Autotrain = state
-    while _G.Autotrain do
-        wait()
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
-    end
-end)
+Tab:AddToggle({
+	Name = "Auto Training",
+	Default = false,
+	Callback = function(Value)
+		_G.Autotrain = state
+        while _G.Autotrain do
+            wait()
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
+        end
+	end    
+})
 
 local NPCw1 = {}
 local NPC = nil
@@ -17,12 +27,20 @@ for i,v in pairs(game:GetService("Workspace").GameObjects.ArmWrestling["1"].NPC:
     table.insert(NPCw1,v.Name)
 end
 
-Section:NewDropdown("Select NPC to fight", "", NPCw1 , function(currentOption)
-    NPC = currentOption
-end)
+Tab:AddDropdown({
+	Name = "Select NPC",
+	Default = "1",
+	Options = NPCw1,
+	Callback = function(Value)
+		NPC = Value
+	end    
+})
 
-Section:NewToggle("Auto Fight", "ToggleInfo", function(state)
-_G. Autofight = state
+Tab:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		_G. Autofight = Value
 
     if v.Name == "Bully" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
@@ -80,4 +98,5 @@ _G. Autofight = state
     end
     end
     end
-end) 
+	end    
+})
