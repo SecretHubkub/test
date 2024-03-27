@@ -24,7 +24,7 @@ end)
 Section:NewToggle("Auto Fight", "ToggleInfo", function(state)
 _G. Autofight = state
 
-    if NPC.Name == "Bully" then
+    if v.Name == "Bully" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
 
         local args = {
@@ -34,7 +34,7 @@ _G. Autofight = state
         }
 
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-    elseif.Name NPC == "Teacher" then
+    elseif v.Name == "Teacher" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
         local args = {
             [1] = "Teacher",
@@ -45,7 +45,7 @@ _G. Autofight = state
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
     
 
-    elseif NPC.Name == "GymRat" then
+    elseif v.Name == "GymRat" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
         local args = {
             [1] = "GymRat",
@@ -55,7 +55,7 @@ _G. Autofight = state
     
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
 
-    elseif NPC.Name == "MafiaBoss" then
+    elseif v.Name == "MafiaBoss" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
         local args = {
             [1] = "MafiaBoss",
@@ -65,7 +65,7 @@ _G. Autofight = state
     
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
    
-    elseif NPC.Name == "Champion" then
+    elseif v.Name == "Champion" then
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
         local args = {
             [1] = "Champion",
