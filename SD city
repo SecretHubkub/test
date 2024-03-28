@@ -1,102 +1,31 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Secrethub"})
-local Tab = Window:MakeTab({
-	Name = "Zone1",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Auto Farm"
-})
+local TweenService = game:GetService("TweenService")
+local character = game.Players.LocalPlayer.Character
 
-Tab:AddToggle({
-	Name = "Auto Training",
-	Default = false,
-	Callback = function(Value)
-		_G.Autotrain = state
-        while _G.Autotrain do
-            wait()
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
-        end
-	end    
-})
+-- ตำแหน่งปลายทางที่ต้องการให้ทวีนไป (ในรูปแบบ CFrame)
+local targetCFrame = CFrame.new(-3119.04834, 209.214951, 2047.35059, 0.958635926, 0, -0.284635067, 0, 1, 0, 0.284635067, 0, 0.958635926) -- กำหนดตำแหน่งใหม่ให้ตัวละครของคุณ
 
-local NPCw1 = {}
-local NPC = nil
-for i,v in pairs(game:GetService("Workspace").GameObjects.ArmWrestling["1"].NPC:GetChildren()) do -- ทำdropdown
-    table.insert(NPCw1,v.Name)
-end
+-- สร้าง tweenInfo สำหรับการทวีน
+local tweenInfo = TweenInfo.new(
+    -- ระยะเวลาในการทวีน (เช่น 1 วินาที)
+    10,
+    -- โหมดการทวีน (เช่น Linear)
+    Enum.EasingStyle.Linear,
+    -- ประเภทของการทวีน (เช่น อานิเมชัน)
+    Enum.EasingDirection.Out,
+    -- จำนวนการทวีนที่จะเกิดขึ้นซ้อน
+    -1,
+    -- การเกิดอีกครั้งหลังจากจบการทวีน
+    false,
+    -- ค่าความเปลี่ยนแปลงความเร็ว (เริ่มจาก 0 ถึง 1)
+    0
+)
 
-Tab:AddDropdown({
-	Name = "Select NPC",
-	Default = "1",
-	Options = NPCw1,
-	Callback = function(Value)
-		NPC = Value
-	end    
-})
+-- สร้าง Tween
+local tween = TweenService:Create(
+    character.PrimaryPart, -- วัตถุที่ต้องการทวีน (ในที่นี้คือ PrimaryPart ของตัวละคร)
+    tweenInfo, -- TweenInfo
+    {CFrame = targetCFrame} -- ค่าที่ต้องการให้เปลี่ยนเป็น
+)
 
-Tab:AddToggle({
-	Name = "This is a toggle!",
-	Default = false,
-	Callback = function(Value)
-		_G. Autofight = Value
-
-    if NPC == "Bully" then
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-
-        local args = {
-            [1] = "Bully",
-            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Bully"):WaitForChild("Table"),
-            [3] = "1"
-        }
-
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-    elseif NPC == "Teacher" then
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-        local args = {
-            [1] = "Teacher",
-            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Teacher"):WaitForChild("Table"),
-            [3] = "1"
-        }
-    
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-    
-
-    elseif NPC == "GymRat" then
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-        local args = {
-            [1] = "GymRat",
-            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("GymRat"):WaitForChild("Table"),
-            [3] = "1"
-        }
-    
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-
-    elseif NPC == "MafiaBoss" then
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-        local args = {
-            [1] = "MafiaBoss",
-            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("MafiaBoss"):WaitForChild("Table"),
-            [3] = "1"
-        }
-    
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-   
-    elseif NPC == "Champion" then
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-        local args = {
-            [1] = "Champion",
-            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Champion"):WaitForChild("Table"),
-            [3] = "1"
-        }
-    
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
-    
-    end
-    end
-    end
-    end
-    end
-	end    
-})
+-- เริ่มทวีน
+tween:Play()
