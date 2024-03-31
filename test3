@@ -1,0 +1,19 @@
+function checklevel()
+    local mylevel = game:GetService("Players").LocalPlayer.Data.Level.Value
+    if mylevel == 1 or <= 9 then
+        Mon = "Bandit"
+        questpos = CFrame.new(1060.23046875, 16.362735748291016, 1549.177001953125)
+        monpos = CFrame.new(967.695068359375, 16.34925651550293, 1544.7884521484375)
+        questname = "BanditQuest1"
+        questnumber = 1
+    end
+end
+
+checklevel()
+local args = {
+    [1] = "StartQuest",
+    [2] = questname,
+    [3] = questnumber
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
