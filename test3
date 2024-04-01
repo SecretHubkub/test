@@ -28,9 +28,10 @@
         Default = false,
         Callback = function(Value)
             _G.Autohit = Value
-            while _G.Autohit do wait()
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(474,204))
+            while _G.Autohit do
+                wait()
+                game:GetService('VirtualUser'):CaptureController()
+                game:GetService('VirtualUser'):Button1Down(Vector2.new(474,204))
             end
         end    
     })
