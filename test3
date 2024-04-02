@@ -55,7 +55,7 @@ local Dropdown = Tabs.Main:AddDropdown(player, {
 Dropdown:SetValue("four")
 
 Dropdown:OnChanged(function(Value)
-    print("Dropdown changed:", Value)
+    player = Value
 end)
 
 local Toggle4 = Tabs.Main:AddToggle("MyToggle", {Title = "warp", Default = false })
