@@ -61,7 +61,10 @@ end)
 local Toggle4 = Tabs.Main:AddToggle("MyToggle", {Title = "warp", Default = false })
 
 Toggle4:OnChanged(function(v)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
+    _G.Autotp = v
+    while _G.Autotp do wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
+    end
 end)
 
 Options.MyToggle:SetValue(false)
