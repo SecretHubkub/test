@@ -47,7 +47,7 @@ end)
 
 local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
-Toggle4:OnChanged(function(v)
+Toggle2:OnChanged(function(v)
     _G.Autotp = v
     while _G.Autotp do wait()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
