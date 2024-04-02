@@ -27,6 +27,14 @@ Toggle1:OnChanged(function(value)
     end
 end)
 
+local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
+
+Toggle2:OnChanged(function(value)
+    _G.Autotp = value
+    while _G.Autotp do wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
+    end
+end)
 
 
 local plr = {}
@@ -48,14 +56,8 @@ Dropdown:OnChanged(function(Value)
     player = Value
 end)
 
-local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
-Toggle2:OnChanged(function(value)
-    _G.Autotp = value
-    while _G.Autotp do wait()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
-    end
-end)
+
 
 Options.MyToggle:SetValue(false)
-
+เดวผมมา
