@@ -26,19 +26,6 @@ Toggle1:OnChanged(function(value)
         wait()
     end
 end)
-
-local Toggle2 = Tabs.Main:AddToggle("Zoka", { Title = "Zoka", Default = false })
-
-Toggle2:OnChanged(function(value)
-    print("Toggle changed:", value)
-end)
-
-local Toggle3 = Tabs.Main:AddToggle("kalo", { Title = "molesa", Default = false })
-
-Toggle3:OnChanged(function(value)
-    print("Toggle changed:", value)
-end)
-
 local plr = {}
 local player = nil
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -58,7 +45,7 @@ Dropdown:OnChanged(function(Value)
     player = Value
 end)
 
-local Toggle4 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
+local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
 Toggle4:OnChanged(function(v)
     _G.Autotp = v
