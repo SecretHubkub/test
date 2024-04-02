@@ -9,30 +9,59 @@ local Window = Fluent:CreateWindow({
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when there's no MinimizeKeybind
 })
 
---Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
-local Options = Fluent.Options
+local Toggle1 = Tabs.Main:AddToggle("kosos", { Title = "kosos", Default = false })
 
-do
-    local Toggle = Tabs.Main:AddToggle("print", {Title = "Toggle", Default = false })
+Toggle1:OnChanged(function(value)
+    _G.print = value
+    while _G.print do 
+        print("mesopolosa")
+        wait()
+    end
+end)
 
-    Toggle:OnChanged(function()
-        print("Toggle changed:", Options.print.Value)
-    end)
+local Toggle2 = Tabs.Main:AddToggle("Zoka", { Title = "Zoka", Default = false })
 
-    Options.MyToggle:SetValue(false)
+Toggle2:OnChanged(function(value)
+    print("Toggle changed:", value)
+end)
 
-    local Toggle = Tabs.Main:AddToggle("Zoka", {Title = "Toggle", Default = false })
+local Toggle3 = Tabs.Main:AddToggle("kalo", { Title = "molesa", Default = false })
 
-    Toggle:OnChanged(function()
-        print("Toggle changed:", Options.Zoka.Value)
-    end)
+Toggle3:OnChanged(function(value)
+    print("Toggle changed:", value)
+end)
 
-    Options.MyToggle:SetValue(false)
+local plr = {}
+local player = nil
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(plr,v.Name)
+end
+
+local Dropdown = Tabs.Main:AddDropdown(player, {
+    Title = "Select Player to tp",
+    Values = plr,
+    Multi = false,
+    Default = 1,
+})
+
+Dropdown:SetValue("four")
+
+Dropdown:OnChanged(function(Value)
+    print("Dropdown changed:", Value)
+end)
+
+local Toggle4 = Tabs.Main:AddToggle("MyToggle", {Title = "warp", Default = false })
+
+Toggle4:OnChanged(function(v)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
+end)
+
+Options.MyToggle:SetValue(false)
