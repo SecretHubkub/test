@@ -35,7 +35,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(plr,v.Name)
 end
 
-local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+local Dropdown = Tabs.Main:AddDropdown(plr, {
     Title = "selectPlayer",
     Values = player,
     Multi = false,
@@ -45,7 +45,7 @@ local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
 Dropdown:SetValue("four")
 
 Dropdown:OnChanged(function(Value)
-    print("Dropdown changed:", Value)
+    player = Value
 end)
 
 local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
