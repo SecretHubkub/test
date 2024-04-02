@@ -26,6 +26,7 @@ Toggle1:OnChanged(function(value)
         wait()
     end
 end)
+
 local plr = {}
 local player = nil
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -47,11 +48,11 @@ end)
 
 local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
-Toggle2:OnChanged(function(v)
-    _G.Autotp = v
+Toggle2:OnChanged(function(value)
+    _G.Autotp = value
     while _G.Autotp do wait()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
     end
 end)
 
-Options.MyToggle:SetValue(false)
+Toggle2:SetValue(false) -- ตั้งค่า Toggle2 เป็น false เพื่อให้ไม่ถูกเลือกโดยค่าเริ่มต้น
