@@ -27,6 +27,27 @@ Toggle1:OnChanged(function(value)
     end
 end)
 
+
+
+local plr = {}
+local player = nil
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(plr,v.Name)
+end
+
+local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+    Title = "selectPlayer",
+    Values = player,
+    Multi = false,
+    Default = 1,
+})
+
+Dropdown:SetValue("four")
+
+Dropdown:OnChanged(function(Value)
+    print("Dropdown changed:", Value)
+end)
+
 local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
 Toggle2:OnChanged(function(value)
@@ -37,23 +58,4 @@ Toggle2:OnChanged(function(value)
 end)
 
 Options.MyToggle:SetValue(false)
-
-local plr = {}
-local player = nil
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    table.insert(plr,v.Name)
-end
-
-local Dropdown = Tabs.Main:AddDropdown(player, {
-    Title = "Select Player to tp",
-    Values = plr,
-    Multi = false,
-    Default = 1,
-})
-
-Dropdown:SetValue("four")
-
-Dropdown:OnChanged(function(Value)
-    player = Value
-end)
 
