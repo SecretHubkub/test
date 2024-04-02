@@ -3,8 +3,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fluent " .. Fluent.Version,
-    SubTitle = "by dawid",
+    Title = "Secret Hub " .. Fluent.Version,
+    SubTitle = "by Secret",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
@@ -12,52 +12,27 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Main = Window:AddTab({ Title = "Auto Farm", Icon = "" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
-local Toggle = Tabs.Main:AddToggle("Auto equip", {Title = "Toggle", Default = false })
+local Options = Fluent.Options
 
-Toggle:OnChanged(function(v)
-    _G.Auto_Equip = v
-     while _G.Auto_Equip do wait()
-        pcall(function()
-            local weapon = "None"
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").fameshop0828.Backpack:FindFirstChild(weapon))
-        end)
-    end
-end)
+do
+    local Toggle = Tabs.Main:AddToggle("print", {Title = "Toggle", Default = false })
 
-Options.MyToggle:SetValue(false)
+    Toggle:OnChanged(function()
+        print("Toggle changed:", Options.print.Value)
+    end)
 
+    Options.MyToggle:SetValue(false)
 
+    local Toggle = Tabs.Main:AddToggle("Zoka", {Title = "Toggle", Default = false })
 
-local Toggle = Tabs.Main:AddToggle("Auto Hit", {Title = "Toggle", Default = false })
+    Toggle:OnChanged(function()
+        print("Toggle changed:", Options.Zoka.Value)
+    end)
 
-Toggle:OnChanged(function(v)
-    _G.Autohit = v
-    while _G.Autohit do wait()
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(483,343))
-    end
-end)
-
-Options.MyToggle:SetValue(false)
-    
-    
-local Toggle = Tabs.Main:AddToggle("Auto Farm boss", {Title = "Toggle", Default = false })
-
-Toggle:OnChanged(function(v)
-    _G.AutoFarm_boss = v
-    while _G.AutoFarm_boss do wait()
-        local warp = game.Players.LocalPlayer.Character.HumanoidRootPart
-        for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetDescendants()) do
-            if v.ClassName == "Model" then
-                    warp.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-            end
-        end
-    end
-end)
-
-Options.MyToggle:SetValue(false)
+    Options.MyToggle:SetValue(false)
