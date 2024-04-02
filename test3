@@ -7,14 +7,14 @@ local Window = Fluent:CreateWindow({
     SubTitle = "by Secret",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- การเบลออาจจะสามารถตรวจจับได้ การตั้งค่าเป็น false จะปิดการเบลอทั้งหมด
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- ใช้เมื่อไม่มีปุ่มที่ใช้ย่อหน้าต่าง
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when there's no MinimizeKeybind
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }), -- แท็บหลัก
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }) -- แท็บการตั้งค่า
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
 local Toggle1 = Tabs.Main:AddToggle("kosos", { Title = "kosos", Default = false })
@@ -55,11 +55,10 @@ local Dropdown = Tabs.Main:AddDropdown(player, {
 Dropdown:SetValue("four")
 
 Dropdown:OnChanged(function(Value)
-    player = Value -- แก้ไขตรงนี้เพื่อกำหนดค่าของตัวแปร player เป็นชื่อของผู้เล่นที่เลือก
-    print("Dropdown changed:", Value)
+    player = Value
 end)
 
-local Toggle4 = Tabs.Main:AddToggle("MyToggle", {Title = "warp", Default = false })
+local Toggle4 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
 Toggle4:OnChanged(function(v)
     _G.Autotp = v
@@ -67,3 +66,5 @@ Toggle4:OnChanged(function(v)
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
     end
 end)
+
+Options.MyToggle:SetValue(false)
