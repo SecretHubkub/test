@@ -1,33 +1,14 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-
-local Window = Fluent:CreateWindow({
-    Title = "Secret Hub " .. Fluent.Version,
-    SubTitle = "by Secret",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Amethyst", --Amethyst
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when there's no MinimizeKeybind
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "assasin",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
-}
-
-local Toggle1 = Tabs.Main:AddToggle("kosos", { Title = "kosos", Default = false })
-
-Toggle1:OnChanged(function(value)
-    _G.print = value
-    while _G.print do 
-        print("mesopolosa")
-        wait()
-    end
-end)
-
-
+local Section = Tab:AddSection({
+	Name = "assasin"
+})
 
 local plr = {}
 local player = nil
@@ -35,27 +16,62 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(plr,v.Name)
 end
 
-local Dropdown = Tabs.Main:AddDropdown(player, {
-    Title = "selectPlayer",
-    Values = plr,
-    Multi = false,
-    Default = 1,
+
+Tab:AddDropdown({
+	Name = "Select player",
+	Default = "1",
+	Options = plr,
+	Callback = function(Value)
+		player = Value
+	end    
 })
 
-Dropdown:SetValue("four")
 
-Dropdown:OnChanged(function(Value)
-    player = Value
-end)
+Tab:AddToggle({
+	Name = "tp to player",
+	Default = false,
+	Callback = function(Value)
+        _G.Autotp = Value
+        while _G.Autotp do wait()
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
+        end
+	end    
+})
 
-local Toggle2 = Tabs.Main:AddToggle("kalos", {Title = "warp", Default = false })
 
-Toggle2:OnChanged(function(value)
-    _G.Autotp = value
-    while _G.Autotp do wait()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
-    end
-end)
+Tab:AddToggle({
+	Name = "Auto Punch",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_punch = Value
+        while _G.Auto_punch do wait()
+            local combat = "Combat"
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").fameshop0828.Backpack:FindFirstChild(combat))
+            local args = {
+                [1] = "ChargeButton"
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("MainEvent"):FireServer(unpack(args))
+        end
+	end
+})
 
-Options.MyToggle:SetValue(false)
-
+Tab:AddToggle({
+	Name = "Auto Stomp",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_stomp = Value
+		while _G.Auto_stomp do wait()
+			for i,v in pairs(game:GetService("Workspace").Players:GetDescendants()) do
+				if v.Parent == "Player" then
+					if v.Humanoid.Health == 0 then
+						local warp = game.Players.LocalPlayer.Character.HumanoidRootPart
+						warp.CFrame = v.CFrame
+						game:GetService("VirtualInputManager"):SendKeyEvent(true,101,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+						game:GetService("VirtualInputManager"):SendKeyEvent(false,101,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+					end
+				end
+			end
+		end
+	end    
+})
