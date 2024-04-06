@@ -1,77 +1,46 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-local Tab = Window:MakeTab({
-	Name = "assasin",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Secret Hub " .. Fluent.Version,
+    SubTitle = "by ???",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Amethyst",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
-local Section = Tab:AddSection({
-	Name = "assasin"
-})
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
 
-local plr = {}
-local player = nil
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    table.insert(plr,v.Name)
-end
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto hit", Default = false })
 
+    Toggle:OnChanged(function(v)
+        _G.Auto_Hit = v
+        while _G.Auto_Hit do wait()
+            local ohString1 = "FS_None_M1"
 
-Tab:AddDropdown({
-	Name = "Select player",
-	Default = "1",
-	Options = plr,
-	Callback = function(Value)
-		player = Value
-	end    
-})
-
-
-Tab:AddToggle({
-	Name = "tp to player",
-	Default = false,
-	Callback = function(Value)
-        _G.Autotp = Value
-        while _G.Autotp do wait()
-		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
+            game:GetService("ReplicatedStorage").Chest.Remotes.Functions.SkillAction:InvokeServer(ohString1)
         end
-	end    
-})
+    end)
 
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Farm boss z1", Default = false })
 
-Tab:AddToggle({
-	Name = "Auto Punch",
-	Default = false,
-	Callback = function(Value)
-		_G.Auto_punch = Value
-        while _G.Auto_punch do wait()
-            local combat = "Combat"
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").fameshop0828.Backpack:FindFirstChild(combat))
-            local args = {
-                [1] = "ChargeButton"
-            }
-            
-            game:GetService("ReplicatedStorage"):WaitForChild("MainEvent"):FireServer(unpack(args))
+    Toggle:OnChanged(function(V)
+        _G.AutoFarmboss = V
+        while _G.AutoFarmboss do wait()
+            for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                if v.Name == "Smoky [Lv. 20]" or v.Name == "Tashi [Lv. 30]" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0,0,5)
+                    _G.AutoFarmboss = false
+                end
+            end
         end
-	end
-})
-
-Tab:AddToggle({
-	Name = "Auto Stomp",
-	Default = false,
-	Callback = function(Value)
-		_G.Auto_stomp = Value
-		while _G.Auto_stomp do wait()
-			for i,v in pairs(game:GetService("Workspace").Players:GetDescendants()) do
-				if v.Parent == "Player" then
-					if v.Humanoid.Health == 0 then
-						local warp = game.Players.LocalPlayer.Character.HumanoidRootPart
-						warp.CFrame = v.CFrame
-						game:GetService("VirtualInputManager"):SendKeyEvent(true,101,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-						game:GetService("VirtualInputManager"):SendKeyEvent(false,101,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-					end
-				end
-			end
-		end
-	end    
-})
+    end)
+    
+    Options.MyToggle:SetValue(false)
