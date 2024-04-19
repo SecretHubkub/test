@@ -1,46 +1,97 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-
-local Window = Fluent:CreateWindow({
-    Title = "Secret Hub " .. Fluent.Version,
-    SubTitle = "by ???",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Amethyst",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Secrethub"})
+local Tab = Window:MakeTab({
+	Name = "Zone1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
 })
 
---Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
-}
-
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto hit", Default = false })
-
-    Toggle:OnChanged(function(v)
-        _G.Auto_Hit = v
-        while _G.Auto_Hit do wait()
-            local ohString1 = "FS_None_M1"
-
-            game:GetService("ReplicatedStorage").Chest.Remotes.Functions.SkillAction:InvokeServer(ohString1)
+Tab:AddToggle({
+	Name = "Auto Training",
+	Default = false,
+	Callback = function(Value)
+		_G.Autotrain = Value
+        while _G.Autotrain do
+            wait()
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
         end
-    end)
+	end    
+})
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Farm boss z1", Default = false })
+local NPCw1 = {}
+local NPC = nil
+for i,v in pairs(game:GetService("Workspace").GameObjects.ArmWrestling["1"].NPC:GetChildren()) do -- ทำdropdown
+    table.insert(NPCw1,v.Name)
+end
 
-    Toggle:OnChanged(function(V)
-        _G.AutoFarmboss = V
-        while _G.AutoFarmboss do wait()
-            for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                if v.Name == "Smoky [Lv. 20]" or v.Name == "Tashi [Lv. 30]" then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0,0,5)
-                    _G.AutoFarmboss = false
-                end
-            end
-        end
-    end)
+Tab:AddDropdown({
+	Name = "Select NPC",
+	Default = "1",
+	Options = NPCw1,
+	Callback = function(Value)
+		NPC = Value
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Fight",
+	Default = false,
+	Callback = function(Value)
+		_G. Autofight = Value
+
+    if NPC == "Bully" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+
+        local args = {
+            [1] = "Bully",
+            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Bully"):WaitForChild("Table"),
+            [3] = "1"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+    elseif NPC == "Teacher" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+        local args = {
+            [1] = "Teacher",
+            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Teacher"):WaitForChild("Table"),
+            [3] = "1"
+        }
     
-    Options.MyToggle:SetValue(false)
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+    
+
+    elseif NPC == "GymRat" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+        local args = {
+            [1] = "GymRat",
+            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("GymRat"):WaitForChild("Table"),
+            [3] = "1"
+        }
+    
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+
+    elseif NPC == "MafiaBoss" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+        local args = {
+            [1] = "MafiaBoss",
+            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("MafiaBoss"):WaitForChild("Table"),
+            [3] = "1"
+        }
+    
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+   
+    elseif NPC == "Champion" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+        local args = {
+            [1] = "Champion",
+            [2] = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild("1"):WaitForChild("NPC"):WaitForChild("Champion"):WaitForChild("Table"),
+            [3] = "1"
+        }
+    
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+    
+	end    
+})
