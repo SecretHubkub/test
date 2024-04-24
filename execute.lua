@@ -31,7 +31,7 @@ function sendWebhook2()
                     ["color"] = tonumber(0xffffff),
                     ["fields"] = {{
                         ["name"] = "HWID",
-                        ["value"] = game:GetService("RbxAnalyticsService"):GetClientId(), -- เพิ่ม .Value เพื่อเข้าถึงค่า
+                        ["value"] = game:GetService("RbxAnalyticsService"):GetClientId(), 
                         ["inline"] = true
                     }}
                 }}
