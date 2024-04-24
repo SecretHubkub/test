@@ -5,17 +5,17 @@ end)
 
 
 local HttpRequest = http_request or request or syn.request
--- สร้างตัวแปรเพื่อเก็บสถานะการส่ง webhook
+
 local webhookSent = false
 
--- สร้างฟังก์ชันสำหรับส่ง webhook
+
 function sendWebhook2()
-    -- ตรวจสอบว่า webhook ยังไม่ได้ส่ง
+
     if not webhookSent then
         HttpService = game:GetService("HttpService")
         Webhook_URL = _G.Webhook_URL
 
-        -- ส่ง webhook
+
         local response = HttpRequest({
             Url = Webhook_URL,
             Method = "POST",
@@ -38,7 +38,6 @@ function sendWebhook2()
             })
         })
 
-        -- ตั้งค่าสถานะ webhook ให้เป็น true เมื่อส่งแล้ว
         webhookSent = true
     end
 end
